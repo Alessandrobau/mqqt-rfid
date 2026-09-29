@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "author": "Ale",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "board-mfrc522", "id": "rfid", "top": -150, "left": 200, "attrs": {} },
+    { "type": "wokwi-led", "id": "led1", "top": 200, "left": -120, "attrs": { "color": "green" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": 270, "left": -130, "rotate": 90, "attrs": { "value": "220" } }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "rfid:SDA", "esp:5", "green", [] ],
+    [ "rfid:SCK", "esp:18", "green", [] ],
+    [ "rfid:MOSI", "esp:23", "green", [] ],
+    [ "rfid:MISO", "esp:19", "green", [] ],
+    [ "rfid:RST", "esp:22", "green", [] ],
+    [ "rfid:3.3V", "esp:3V3", "red", [] ],
+    [ "rfid:GND", "esp:GND.2", "black", [] ],
+    [ "esp:2", "led1:A", "green", [] ],
+    [ "led1:C", "r1:1", "black", [] ],
+    [ "r1:2", "esp:GND.1", "black", [] ]
+  ],
+  "dependencies": {}
+}
